@@ -8,14 +8,16 @@ import Login from "./Pages/Login";
 
 function App() {
   return (
-    <div>
+    <div className="flex flex-col min-h-screen">
       <NavBar />
-      <Routes>
-        <Route path="/" Component={Home} />
-        <Route path="/products" Component={Products} />
-        <Route path="/cart" Component={Cart} />
-        <Route path="/login" Component={Login} />
-      </Routes>
+      <main>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/products" element={<Products />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/login" element={<Login />} />
+        </Routes>
+      </main>
 
       <Footer />
     </div>
