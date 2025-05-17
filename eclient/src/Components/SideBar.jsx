@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-function SideBar() {
+function SideBar(props) {
   const [category, setCategory] = useState([]);
   const [minPrice, setMinPrice] = useState(100);
   const [maxPrice, setMaxPrice] = useState(3000);
+  const priceMin = Math.min(minPrice, maxPrice);
+  const priceMax = Math.max(minPrice, maxPrice);
 
   function handleCategory(e) {
     if (!category.includes(e.target.value))
@@ -19,10 +21,19 @@ function SideBar() {
     } else setMaxPrice(e.target.value);
   }
 
+  useEffect(() => {
+    props.onFilterChange({
+      categories: category,
+      minPrice: Number(minPrice),
+      maxPrice: Number(maxPrice),
+    });
+  }, [category, minPrice, maxPrice]);
+
   return (
     <>
       <div>
         <div>
+          <h3>Category</h3>
           <label htmlFor="men">Men :</label>
           <input
             type="checkbox"
@@ -45,27 +56,28 @@ function SideBar() {
             onChange={handleCategory}
           />
         </div>
-        {category}
+
         <div>
+          <h4>Price</h4>
           <input
             type="range"
             min="100"
             max="3000"
             name="min"
             step="10"
-            value={Math.max(minPrice, 0)}
+            value={priceMin}
             onChange={handlePrice}
           ></input>
-          {minPrice}
+          {priceMin}
           <input
             type="range"
             min="100"
             max="3000"
             name="max"
-            value={Math.min(maxPrice, 3000)}
+            value={priceMax}
             onChange={handlePrice}
           ></input>
-          {maxPrice}
+          {priceMax}
         </div>
       </div>
     </>
