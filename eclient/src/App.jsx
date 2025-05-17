@@ -5,6 +5,7 @@ import Products from "./Pages/Products";
 import Cart from "./Pages/Cart";
 import Home from "./Pages/Home";
 import Login from "./Pages/Login";
+import SideBar from "./Components/SideBar";
 
 function App() {
   return (
