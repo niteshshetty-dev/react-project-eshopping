@@ -1,6 +1,11 @@
 import { NavLink } from "react-router-dom";
+import { useAuth } from "../context/authContext";
+import { useNavigate } from "react-router-dom";
 
 function NavBar() {
+  const { isAuthenticated, logout } = useAuth();
+  const navigate = useNavigate();
+
   return (
     <>
       <header>
@@ -48,16 +53,30 @@ function NavBar() {
                 </NavLink>
               </li>
               <li>
-                <NavLink
-                  className={({ isActive }) =>
-                    isActive
-                      ? "text-black font-bold"
-                      : "text-gray-600 hover:text-black"
-                  }
-                  to="/login"
-                >
-                  Login
-                </NavLink>
+                {isAuthenticated() ? (
+                  <div>
+                    <button
+                      className="text-black font-bold"
+                      onClick={() => {
+                        logout();
+                        navigate("/login");
+                      }}
+                    >
+                      Logout
+                    </button>
+                  </div>
+                ) : (
+                  <NavLink
+                    className={({ isActive }) =>
+                      isActive
+                        ? "text-black font-bold"
+                        : "text-gray-600 hover:text-black"
+                    }
+                    to="/login"
+                  >
+                    Login
+                  </NavLink>
+                )}
               </li>
             </ul>
           </nav>

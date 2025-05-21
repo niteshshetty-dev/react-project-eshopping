@@ -5,7 +5,7 @@ import Products from "./Pages/Products";
 import Cart from "./Pages/Cart";
 import Home from "./Pages/Home";
 import Login from "./Pages/Login";
-import SideBar from "./Components/SideBar";
+import PrivateRoutes from "./Components/PrivateRoutes";
 
 function App() {
   return (
@@ -15,7 +15,14 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/products" element={<Products />} />
-          <Route path="/cart" element={<Cart />} />
+          <Route
+            path="/cart"
+            element={
+              <PrivateRoutes>
+                <Cart />
+              </PrivateRoutes>
+            }
+          />
           <Route path="/login" element={<Login />} />
         </Routes>
       </main>
