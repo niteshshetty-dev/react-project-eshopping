@@ -2,7 +2,7 @@ import SideBar from "../Components/SideBar";
 import ProductCard from "../Components/ProductCard";
 import { useState } from "react";
 import products from "../data/Products";
-import { useCart } from "../context/cartContext";
+import { useCart } from "../context/CartContext";
 
 function Products() {
   const [addedMap, setAddedMap] = useState({});
