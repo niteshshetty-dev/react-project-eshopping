@@ -2,6 +2,8 @@ E-Shopping App
 
 This is a React-based e-commerce frontend project with basic authentication and cart functionality.
 
+Live demo: https://react-project-eshopping-git-master-nithesh-shettys-projects.vercel.app/
+
 Features:
 
 Login with mock credentials
